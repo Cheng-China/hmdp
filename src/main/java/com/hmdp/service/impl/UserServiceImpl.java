@@ -57,6 +57,8 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User> implements IU
         String code = RandomUtil.randomString(6);
         log.debug(code);
         redisTemplate.opsForValue().set(phone,code);
+        //设置验证码的过期时间为 5 分钟
+        redisTemplate.expire(phone,5,TimeUnit.MINUTES);
         return Result.ok();
     }
 
