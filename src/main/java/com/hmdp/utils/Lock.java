@@ -18,3 +18,4 @@ public class Lock {
         stringRedisTemplate.delete(key);
     }
 }
+
